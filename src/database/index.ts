@@ -1,6 +1,13 @@
-import { Sequelize } from 'sequelize'
-const dbConfig = require('../config/database')
+import { Sequelize, DataType } from "sequelize/types";
 
-const connection = new Sequelize(dbConfig);
-
-export default connection;
+const Sequelize = require("sequelize");
+class MyModel extends Sequelize.Model {
+  static init(sequelize : Sequelize, DataTypes:DataType) {
+    return super.init(
+      {
+        myField: DataTypes.toString
+      },
+      { sequelize }
+    );
+  }
+}
